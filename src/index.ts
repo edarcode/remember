@@ -5,7 +5,6 @@ import { routeNotFoundHandler } from "./server/routeNotFoundHandler";
 import { errorHandler } from "./server/errHandler";
 import { PORT, SERVER_ON } from "./server/consts";
 import { welcomeRouter } from "./modules/welcome/welcomeRoute";
-import { db } from "./db/db";
 
 // server
 
@@ -27,7 +26,4 @@ server.use(errorHandler);
 
 // server-up
 
-server.listen(PORT, () => {
-  console.log(db);
-  console.log(SERVER_ON);
-});
+server.listen(PORT, () => console.log(SERVER_ON));
