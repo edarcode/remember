@@ -88,8 +88,6 @@ export const desks = sqliteTable("desks", {
     .primaryKey()
     .$defaultFn(() => crypto.randomUUID()),
   name: text("name").notNull(),
-  createdAt: text("created_at").default(sql`(CURRENT_TIMESTAMP)`),
-  updateAt: text("updated_at").$onUpdate(() => sql`(CURRENT_TIMESTAMP)`),
   userId: text("user_id")
     .notNull()
     .references(() => users.id, { onDelete: "cascade" }),
