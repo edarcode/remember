@@ -1,3 +1,3 @@
 export const welcomeService = () => {
-  return { msg: "¡Bienvenido! 😎" };
+  return { msg: "Welcome! 😎" };
 };

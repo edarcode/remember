@@ -19,8 +19,7 @@ export const users = sqliteTable("users", {
   role: text("role", { enum: [ROLE.chief, ROLE.admin, ROLE.client] }).default(
     ROLE.client
   ),
-  name: text("name").unique().notNull(),
-  tell: numeric("tell").unique().notNull(),
+  name: text("name"),
   email: text("email").unique().notNull(),
   password: text("password").notNull(),
   img: text("img"),

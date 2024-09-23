@@ -5,6 +5,7 @@ import { routeNotFoundHandler } from "./server/routeNotFoundHandler";
 import { errorHandler } from "./server/errHandler";
 import { PORT, SERVER_ON } from "./server/consts";
 import { welcomeRouter } from "./modules/welcome/welcomeRoute";
+import { usersRouter } from "./modules/users/usersRouter";
 
 // server
 
@@ -18,6 +19,7 @@ server.use(express.json());
 // routes
 
 server.use("", welcomeRouter);
+server.use("/users", usersRouter);
 
 // handlers
 
