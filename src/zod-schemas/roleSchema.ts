@@ -1,4 +1,4 @@
 import { z } from "zod";
-import { ROLE } from "../db/schema";
+import { Role } from "../db/schema";
 
-export const roleSchema = z.enum([ROLE.chief, ROLE.client, ROLE.admin]);
+export const roleSchema = z.enum([Role.chief, Role.client, Role.admin]);

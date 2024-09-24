@@ -6,7 +6,7 @@ import {
   primaryKey,
 } from "drizzle-orm/sqlite-core";
 
-export enum ROLE {
+export enum Role {
   chief = "CHIEF",
   client = "CLIENT",
   admin = "ADMIN",
@@ -16,8 +16,8 @@ export const users = sqliteTable("users", {
   id: text("id", { length: 36 })
     .primaryKey()
     .$defaultFn(() => crypto.randomUUID()),
-  role: text("role", { enum: [ROLE.chief, ROLE.admin, ROLE.client] }).default(
-    ROLE.client
+  role: text("role", { enum: [Role.chief, Role.admin, Role.client] }).default(
+    Role.client
   ),
   name: text("name"),
   email: text("email").unique().notNull(),
