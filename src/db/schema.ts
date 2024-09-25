@@ -27,8 +27,8 @@ export const users = sqliteTable("users", {
   updateAt: text("updated_at").$onUpdate(() => sql`(CURRENT_TIMESTAMP)`),
 });
 
-export const favoriteCards = sqliteTable(
-  "favoriteCards",
+export const favoriteCard = sqliteTable(
+  "favoriteCard",
   {
     userId: text("user_id")
       .notNull()
@@ -37,10 +37,10 @@ export const favoriteCards = sqliteTable(
       .notNull()
       .references(() => cards.id, { onDelete: "cascade" }),
   },
-  (favoriteCards) => {
+  (favoriteCard) => {
     return {
       id: primaryKey({
-        columns: [favoriteCards.userId, favoriteCards.cardId],
+        columns: [favoriteCard.userId, favoriteCard.cardId],
       }),
     };
   }
@@ -63,26 +63,26 @@ export const cards = sqliteTable("cards", {
     .references(() => users.id, { onDelete: "cascade" }),
 });
 
-export const deskCards = sqliteTable(
-  "deskCards",
+export const deckCard = sqliteTable(
+  "deckCard",
   {
     deskId: text("desk_id")
       .notNull()
-      .references(() => desks.id, { onDelete: "cascade" }),
+      .references(() => decks.id, { onDelete: "cascade" }),
     cardId: text("card_id")
       .notNull()
       .references(() => cards.id, { onDelete: "cascade" }),
   },
-  (deskCards) => {
+  (deckCard) => {
     return {
       id: primaryKey({
-        columns: [deskCards.deskId, deskCards.cardId],
+        columns: [deckCard.deskId, deckCard.cardId],
       }),
     };
   }
 );
 
-export const desks = sqliteTable("desks", {
+export const decks = sqliteTable("decks", {
   id: text("id", { length: 36 })
     .primaryKey()
     .$defaultFn(() => crypto.randomUUID()),
